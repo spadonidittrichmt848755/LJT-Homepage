@@ -69,6 +69,8 @@ jobs:
           test -f _site/publications/index.html
           test "$(grep -o 'archive__item-title' _site/publications/index.html | wc -l)" -eq 6
           test "$(grep -o 'archive__item-title' _site/cv/index.html | wc -l)" -eq 6
+          grep -q "2025" _site/publications/index.html
+          if grep -q "1900" _site/publications/index.html; then exit 1; fi
           for publication in synlogic perception-bottleneck-of-vlms-for-chart-understanding universal-truthfulness-hyperplane-inside-llms in-context-sharpness-as-alerts c-eval composing-parameter-efficient-modules-with-arithmetic-operations; do
             test -f "_site/publication/${publication}/index.html"
           done
